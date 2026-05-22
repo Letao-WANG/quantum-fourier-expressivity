@@ -1,0 +1,105 @@
+\documentclass[12pt]{article}
+
+% ---------- 页面与行距 ----------
+\usepackage[margin=0.55in]{geometry}
+\usepackage{setspace}
+\onehalfspacing   % 全文 1.5 倍行距（包括 caption）
+
+% ---------- 字体：Times Roman ----------
+\usepackage{newtxtext,newtxmath} % 正文 + 数学统一 Times
+
+% ---------- 段落 ----------
+\usepackage{parskip}
+
+% ---------- 图表与 caption ----------
+\usepackage{graphicx}
+\usepackage{caption}
+\captionsetup{
+  font=normalfont,   % 使用正文同款字体和字号（12pt）
+  width=\textwidth,
+  format=plain,
+  justification=justified,
+  singlelinecheck=false
+}
+\usepackage{subcaption}
+
+% ---------- 数学 ----------
+\let\openbox\relax
+\usepackage{amsmath,amsthm}
+\usepackage{braket}
+
+% ---------- 引用 ----------
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[colorlinks=true]{hyperref}
+\hypersetup{
+  linkcolor=blue,
+  citecolor=Magenta,
+  urlcolor=MidnightBlue,
+}
+\usepackage[nameinlink,capitalise]{cleveref}
+
+% ---------- 其他 ----------
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{adjustbox}
+\usepackage{float}
+\usepackage{authblk}
+\setcounter{Maxaffil}{0}
+\usepackage[dvipsnames]{xcolor}
+
+% ---------- 计数器 ----------
+\usepackage{chngcntr}
+\counterwithout{equation}{section}
+\counterwithout{figure}{section}
+\counterwithout{table}{section}
+
+% ---------- 定理 ----------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+% ---------- 脚注 ----------
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+
+% \title{Learning PDEs for Portfolio Optimization with Quantum Physics-Informed Neural Networks}
+
+\title{\fontsize{14pt}{16pt}\selectfont
+\MakeUppercase{Multi-Stochastic Quantum Estimation for Quantum Machine Learning}}
+
+\author[]{WANG Letao}
+\author[]{LISSER Abdel}
+\author[]{SREEKUMAR Sreejith}
+\author[]{TOFFANO Zeno}
+
+\affil[1]{\small Laboratory of Signals and Systems, CentraleSupélec, CNRS, Université Paris-Saclay, France}
+
+\affil[]{\small
+Emails:
+\href{mailto:letao.wang@centralesupelec.fr}{letao.wang@centralesupelec.fr};
+\href{mailto:abdel.lisser@centralesupelec.fr}{abdel.lisser@centralesupelec.fr};
+    \href{mailto:sreejith.sreekumar@centralesupelec.fr}{sreejith.sreekumar@centralesupelec.fr};
+\href{mailto:zeno.toffano@centralesupelec.fr}{zeno.toffano@centralesupelec.fr}
+}
+
+
+\date{}
+
+
+\begin{document}
+
+\maketitle
+
+\vspace{-0.7cm}
+
+\textbf{Abstract:} Average operators—often referred to as Reynolds operators in classical invariant theory and related to \textit{twirling} in quantum—are fundamental mathematical tools for enforcing symmetries by averaging transformations applied to an object. However, existing quantum implementations typically rely on complex equivalent circuit constructions \cite{simple_Meyer2023} or ancilla qubits \cite{simple_Nguyen2024}. These approaches introduce extra quantum overhead and are largely restricted to transformations with an underlying unitary structure. In this work, we propose \textit{Multi-Stochastic Quantum Estimation (MSQE)}, a novel stochastic method for realizing average operators that circumvents both additional quantum costs and unitary constraints. We characterize the sampling overhead of this method, revealing that achieving a target estimation accuracy of the average function may require either more or fewer shots relative to the original function. Also, we discuss the physical feasibility of MSQE, as it requires updating the model parameters after every single shot—a requirement that not all quantum computer architectures can accommodate. Furthermore, we demonstrate the broad utility of MSQE in geometric quantum machine learning, where it allows for the straightforward construction of symmetry-invariant models. While it is well-established that such models naturally improve generalization and mitigate overfitting \cite{simple_Meyer2023}, we show that our MSQE method alleviates the \textit{vanishing expressivity phenomenon} typically observed in the quantum Fourier model \cite{simple_Mhiri2025constrained}. We further apply MSQE to the evaluation of loss function gradients and the quantum construction of basis functions for partial differential equation (PDE) solvers. Finally, we experimentally validate our method using a symmetric quantum physics-informed neural network (QPINN) for solving PDEs, confirming that incorporating symmetries significantly enhances learning performance.
+
+\textbf{Key words:} Quantum computing, Geometric quantum machine learning, Quantum gradient estimation, Quantum algorithm for PDEs, Stochastic quantum estimation
+
+\vspace{-0.5cm}
+
+\bibliographystyle{unsrtnat}
+\bibliography{apssamp}
+
+\end{document}
